@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="./aframe.js"></script>
+    <link rel="stylesheet" href="./aframe.css">
+  </head>
+  <body>
+    <a-scene physics="debug: false; gravity: 0">
+      <a-assets>
+        <a-asset-item
+          id="gargolaModel"
+          src="./mesh.glb"
+        >
+        <a-asset-item
+          id="bulletModel"
+          src="./bullet.glb"
+        >
+        </a-asset-item>
+      </a-assets>
+      <!-- Suelo -->
+      <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="30"
+        height="30"
+        color="#7BC8A4"
+        static-body
+      ></a-plane>
+
+      <!-- Jugador -->
+      <a-entity
+        id="player"
+        position="0 1.6 0"
+        kinematic-body
+        >
+        <a-camera
+        look-controls="pointerLockEnabled: true"
+        wasd-controls="fly: false; acceleration: 50"
+        >
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+
+      <!-- Enemigo -->
+      <a-entity
+        id="enemy"
+        class="enemy"
+        position="0 4 -8"
+        static-body
+        gltf-model="#gargolaModel"
+        scale="4 4 4"
+      >
+      </a-entity>
+    </a-scene>
+
+  
+
+    <div id="deadScreen">
+      <div class="modal">
+        <h2>No has conseguido eliminar la gargola a tiempo</h2>
+        <p>Tu resultado fue: <b id="resultado"></b> </p>
+        <button onclick="location.reload()">Volver a intentarlo</button>
+      </div>
+    </div>
+
+    <div id="score">
+      <p>Puntuación: <b id="resultado-visible">0</b></p>
+    </div>
+  </body>
+</html>
