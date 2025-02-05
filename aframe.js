@@ -1,3 +1,7 @@
+/**
+ * Este archivo contiene la lógica de la aplicación. Es un juego en el que tendrás que disparar a las gárgolas que aparecen en la escena. Cada vez que dispares a una gárgola, tu puntuación aumentará en 1. Si no das a la gargola en menos de 3 segundos, perderás.
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
   const scene = document.querySelector("a-scene");
   const camera = document.querySelector("a-camera");
